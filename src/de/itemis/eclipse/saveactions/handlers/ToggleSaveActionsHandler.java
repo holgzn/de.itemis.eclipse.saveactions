@@ -21,7 +21,9 @@ public final class ToggleSaveActionsHandler extends AbstractHandler implements I
 
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
 		SaveActions.swap();
-		SaveActions.refreshUi();
+		// SaveActions.persistCurrentState();
+		// no need to refresh.. will be triggered by preferences listener
+		// SaveActions.refreshUi();
 		return null;
 	}
 

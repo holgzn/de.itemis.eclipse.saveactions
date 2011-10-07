@@ -1,11 +1,11 @@
 package de.itemis.eclipse.saveactions;
 
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.ui.IStartup;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
-public class Activator extends AbstractUIPlugin {
-	// implements IStartup
+public class Activator extends AbstractUIPlugin implements IStartup {
 
 	public static final String COMMAND_ID = "de.itemis.eclipse.saveactions.commands.toggleSaveActions"; //$NON-NLS-1$
 
@@ -14,6 +14,7 @@ public class Activator extends AbstractUIPlugin {
 	private static Activator plugin;
 
 	public Activator() {
+		System.out.println("SaveActions.Activator()");
 	}
 
 	/*
@@ -58,7 +59,10 @@ public class Activator extends AbstractUIPlugin {
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);
 	}
 
-	// public void earlyStartup() {
-	// System.out.println("Activator.earlyStartup()");
-	// }
+	public void earlyStartup() {
+		System.out.println("SaveActions.Activator.earlyStartup()");
+		SaveActions.hookUp();
+		// SaveActions.persistCurrentState();
+		// SaveActions.refreshUi();
+	}
 }
