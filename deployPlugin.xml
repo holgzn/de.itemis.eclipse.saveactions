@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="plugin_export" name="build">
+
+	<tstamp>
+		<format property="timestamp" pattern="yyyyMMddhhmm" locale="en,UK" />
+	</tstamp>
+
+	<target name="show-date">
+		<echo>${timestamp}</echo>
+	</target>
 	<target name="plugin_export" description="export the plugin">
-		<pde.exportPlugins destination="/Users/willebrandt/Desktop" exportSource="true" exportType="directory" plugins="de.itemis.eclipse.saveactions" qualifier="201109261005" useJARFormat="true" />
+		<pde.exportPlugins destination="/Users/willebrandt/Desktop" exportSource="true" exportType="directory" plugins="de.itemis.eclipse.saveactions" qualifier="${timestamp}" useJARFormat="true" />
 	</target>
 </project>
