@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="Itemis Category"
+            id="de.itemis.eclipse.saveactions.commands.category">
+      </category>
+      <command
+            name="Toggle Save Actions Cmd"
+            categoryId="de.itemis.eclipse.saveactions.commands.category"
+            id="de.itemis.eclipse.saveactions.commands.toggleSaveActions">
+               <state class="org.eclipse.jface.commands.ToggleState" 
+               	id="STYLE" />
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="de.itemis.eclipse.saveactions.commands.toggleSaveActions"
+            class="de.itemis.eclipse.saveactions.handlers.ToggleSaveActionsHandler">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="de.itemis.eclipse.saveactions.commands.toggleSaveActions"
+            contextId="org.eclipse.ui.contexts.window"
+            sequence="M1+6"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+   </extension>
+<!--            
+            locationURI="toolbar:org.eclipse.ui.edit.text.actionSet.presentation?after=org.eclipse.jdt.ui.edit.text.java.toggleMarkOccurrences">
+            -->
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="de.itemis.eclipse.saveactions.toolbars.saveActionsToolbar">
+            <command
+                  commandId="de.itemis.eclipse.saveactions.commands.toggleSaveActions"
+                  icon="icons/page_gear.png"
+                  id="de.itemis.eclipse.saveactions.toolbars.toggleSaveActionsToolbarCommand"
+                  style="toggle"
+                  tooltip="Toggle Save Actions">
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="de.itemis.eclipse.saveactions.Activator">
+      </startup>
+   </extension>
+   <!--
+   <extension
+         point="org.eclipse.ui.commandImages">
+      <image
+            commandId="de.itemis.eclipse.saveactions.image1"
+            icon="de.itemis.eclipse.saveactions.image1">
+      </image>
+   </extension>
+   -->
+
+</plugin>

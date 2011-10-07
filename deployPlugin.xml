@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="plugin_export" name="build">
+	<target name="plugin_export" description="export the plugin">
+		<pde.exportPlugins destination="/Users/willebrandt/Desktop" exportSource="true" exportType="directory" plugins="de.itemis.eclipse.saveactions" qualifier="201109261005" useJARFormat="true" />
+	</target>
+</project>
