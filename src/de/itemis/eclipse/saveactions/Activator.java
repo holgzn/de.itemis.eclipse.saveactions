@@ -14,13 +14,14 @@ public class Activator extends AbstractUIPlugin implements IStartup {
 	private static Activator plugin;
 
 	public Activator() {
-		System.out.println("SaveActions.Activator()");
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
+	 * @see
+	 * org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext
+	 * )
 	 */
 	@Override
 	public void start(final BundleContext context) throws Exception {
@@ -31,7 +32,9 @@ public class Activator extends AbstractUIPlugin implements IStartup {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
+	 * @see
+	 * org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext
+	 * )
 	 */
 	@Override
 	public void stop(final BundleContext context) throws Exception {
@@ -49,7 +52,8 @@ public class Activator extends AbstractUIPlugin implements IStartup {
 	}
 
 	/**
-	 * Returns an image descriptor for the image file at the given plug-in relative path
+	 * Returns an image descriptor for the image file at the given plug-in
+	 * relative path
 	 * 
 	 * @param path
 	 *            the path
@@ -60,9 +64,6 @@ public class Activator extends AbstractUIPlugin implements IStartup {
 	}
 
 	public void earlyStartup() {
-		System.out.println("SaveActions.Activator.earlyStartup()");
 		SaveActions.hookUp();
-		// SaveActions.persistCurrentState();
-		// SaveActions.refreshUi();
 	}
 }

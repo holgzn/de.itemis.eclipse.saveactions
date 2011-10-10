@@ -1,4 +1,4 @@
-package de.itemis.eclipse.saveactions.handlers;
+package de.itemis.eclipse.saveactions;
 
 import java.util.Map;
 
@@ -8,7 +8,6 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.ui.commands.IElementUpdater;
 import org.eclipse.ui.menus.UIElement;
 
-import de.itemis.eclipse.saveactions.SaveActions;
 
 /**
  * 
@@ -21,9 +20,7 @@ public final class ToggleSaveActionsHandler extends AbstractHandler implements I
 
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
 		SaveActions.swap();
-		// SaveActions.persistCurrentState();
-		// no need to refresh.. will be triggered by preferences listener
-		// SaveActions.refreshUi();
+		// no need to refresh the ui.. will be triggered by preferences listener
 		return null;
 	}
 
@@ -31,7 +28,7 @@ public final class ToggleSaveActionsHandler extends AbstractHandler implements I
 	 * Update command element with toggle state
 	 */
 	public void updateElement(final UIElement element, @SuppressWarnings("rawtypes") final Map parameters) {
-		System.out.println("ToggleSaveActionsHandler.updateElement()");
 		element.setChecked(SaveActions.isSaveActionsEnabled());
 	}
+
 }
