@@ -1,4 +1,4 @@
-package de.itemis.eclipse.saveactions;
+package de.itemis.eclipse.saveactions.internal;
 
 import java.util.Map;
 
@@ -8,11 +8,12 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.ui.commands.IElementUpdater;
 import org.eclipse.ui.menus.UIElement;
 
-
 /**
  * 
  * @see org.eclipse.core.commands.IHandler
  * @see org.eclipse.core.commands.AbstractHandler
+ * 
+ * @author willebrandt
  */
 public final class ToggleSaveActionsHandler extends AbstractHandler implements IElementUpdater {
 	public ToggleSaveActionsHandler() {

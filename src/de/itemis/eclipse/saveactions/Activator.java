@@ -5,6 +5,12 @@ import org.eclipse.ui.IStartup;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
+import de.itemis.eclipse.saveactions.internal.SaveActions;
+
+/**
+ * 
+ * @author willebrandt
+ */
 public class Activator extends AbstractUIPlugin implements IStartup {
 
 	public static final String COMMAND_ID = "de.itemis.eclipse.saveactions.commands.toggleSaveActions"; //$NON-NLS-1$
@@ -19,9 +25,7 @@ public class Activator extends AbstractUIPlugin implements IStartup {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext
-	 * )
+	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext )
 	 */
 	@Override
 	public void start(final BundleContext context) throws Exception {
@@ -32,9 +36,7 @@ public class Activator extends AbstractUIPlugin implements IStartup {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext
-	 * )
+	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext )
 	 */
 	@Override
 	public void stop(final BundleContext context) throws Exception {
@@ -52,8 +54,7 @@ public class Activator extends AbstractUIPlugin implements IStartup {
 	}
 
 	/**
-	 * Returns an image descriptor for the image file at the given plug-in
-	 * relative path
+	 * Returns an image descriptor for the image file at the given plug-in relative path
 	 * 
 	 * @param path
 	 *            the path
@@ -63,6 +64,11 @@ public class Activator extends AbstractUIPlugin implements IStartup {
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.ui.IStartup#earlyStartup()
+	 */
 	public void earlyStartup() {
 		SaveActions.hookUp();
 	}

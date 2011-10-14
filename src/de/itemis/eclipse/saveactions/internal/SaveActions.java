@@ -1,4 +1,4 @@
-package de.itemis.eclipse.saveactions;
+package de.itemis.eclipse.saveactions.internal;
 
 import org.eclipse.core.commands.Command;
 import org.eclipse.core.resources.IProject;
@@ -13,11 +13,18 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.commands.ICommandService;
 import org.osgi.service.prefs.Preferences;
 
+import de.itemis.eclipse.saveactions.Activator;
+
+/**
+ * 
+ * @author willebrandt
+ * 
+ */
 public final class SaveActions {
 
-	private static final String SAVE_ACTIONS_ENABLED = "editor_save_participant_org.eclipse.jdt.ui.postsavelistener.cleanup";//$NON-NLS-1$
-	private static final String INSTANCE = "/instance/";//$NON-NLS-1$
-	private static final String ORG_ECLIPSE_JDT_UI = "org.eclipse.jdt.ui";//$NON-NLS-1$
+	private static final String SAVE_ACTIONS_ENABLED = "editor_save_participant_org.eclipse.jdt.ui.postsavelistener.cleanup"; //$NON-NLS-1$
+	private static final String INSTANCE = "/instance/"; //$NON-NLS-1$
+	private static final String ORG_ECLIPSE_JDT_UI = "org.eclipse.jdt.ui"; //$NON-NLS-1$
 	public static final String PREF_SAVE_ACTIONS_ENABLED = "saveActionsEnabled"; //$NON-NLS-1$
 	private static boolean currentProjectSaveActionsEnabled;
 
@@ -33,14 +40,18 @@ public final class SaveActions {
 	}
 
 	public static boolean isSaveActionsEnabled() {
-		return currentProjectSaveActionsEnabled || getJdtUiNode().getBoolean(SAVE_ACTIONS_ENABLED, false);
+		return currentProjectSaveActionsEnabled || isGloballyEnabled();
 	}
 
-	static Preferences getJdtUiNode() {
+	private static boolean isGloballyEnabled() {
+		return getJdtUiNode().getBoolean(SAVE_ACTIONS_ENABLED, false);
+	}
+
+	private static Preferences getJdtUiNode() {
 		return Platform.getPreferencesService().getRootNode().node(INSTANCE + ORG_ECLIPSE_JDT_UI);
 	}
 
-	public static boolean isProjectSaveActionsEnabled(final IProject project) {
+	private static boolean isProjectSaveActionsEnabled(final IProject project) {
 		return new ProjectScope(project).getNode(ORG_ECLIPSE_JDT_UI).getBoolean(SAVE_ACTIONS_ENABLED, false);
 	}
 
@@ -55,6 +66,7 @@ public final class SaveActions {
 		final Command command = commandService.getCommand(Activator.COMMAND_ID);
 		final PersistentState state = (PersistentState) command.getState(IMenuStateIds.STYLE);
 		state.setValue(Boolean.valueOf(enabled));
+		refreshUi();
 	}
 
 	public static void hookUp() {
@@ -64,21 +76,29 @@ public final class SaveActions {
 				if (SAVE_ACTIONS_ENABLED.equals(event.getProperty())) {
 					refreshUi();
 				}
-
 			}
 		};
 		JavaPlugin.getDefault().getPreferenceStore().addPropertyChangeListener(l);
 	}
 
-	public static void setActiveProjectStatus(final boolean enabled) {
-		currentProjectSaveActionsEnabled = enabled;
-	}
-
-	public static boolean checkCurrentProject(final IProject project) {
+	public static boolean trackProjectState(final IProject project) {
 		final boolean enabled = isProjectSaveActionsEnabled(project);
-		setActiveProjectStatus(enabled);
+		currentProjectSaveActionsEnabled = enabled;
 		setCommandState(enabled);
-		refreshUi();
 		return enabled;
 	}
+
+	// public static boolean isEnabledForCurrentFile(final IFile iFile) {
+	// final boolean projectSaveActions = isEnabledForCurrentProject(iFile.getProject());
+	// if (!projectSaveActions) {
+	// final String filePath = iFile.getFullPath().toString();
+	// final Boolean fileStatus = files.get(filePath);
+	// if (fileStatus != null) {
+	// return fileStatus.booleanValue();
+	// }
+	// }
+	// return projectSaveActions;
+	// }
+	//
+	// private static final Map<String, Boolean> files = new HashMap<String, Boolean>();
 }

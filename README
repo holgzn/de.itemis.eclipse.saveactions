@@ -1,0 +1,9 @@
+This plugin provides a Command that toggles the activation of the global 
+JDT save actions (Shift+Ctrl+# / Shift+Cmd+# on Mac).
+It also contributes a Toolbar icon that represents the current state of the 
+save actions.
+
+The activation of the command and the state of the icon changes depending on the
+current active Java editor. When the project of the current file has save actions enabled,
+the command will be deactivated and the setting cannot be switched.
+ 
