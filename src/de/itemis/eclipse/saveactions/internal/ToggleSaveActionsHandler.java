@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
- package de.itemis.eclipse.saveactions.internal;
+package de.itemis.eclipse.saveactions.internal;
 
 import java.util.Map;
 
@@ -17,10 +17,7 @@ import org.eclipse.ui.menus.UIElement;
 
 /**
  * 
- * @see org.eclipse.core.commands.IHandler
- * @see org.eclipse.core.commands.AbstractHandler
- * 
- * @author willebrandt
+ * @author holger willebrandt - Initial contribution and API
  */
 public final class ToggleSaveActionsHandler extends AbstractHandler implements IElementUpdater {
 	public ToggleSaveActionsHandler() {

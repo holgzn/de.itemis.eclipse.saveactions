@@ -10,11 +10,11 @@
    <extension
          point="org.eclipse.ui.commands">
       <category
-            name="Itemis Category"
+            name="%category.name"
             id="de.itemis.eclipse.saveactions.commands.category">
       </category>
       <command
-            name="Toggle Save Actions Cmd"
+            name="%command.name"
             categoryId="de.itemis.eclipse.saveactions.commands.category"
             id="de.itemis.eclipse.saveactions.commands.toggleSaveActions">
                <state class="org.eclipse.jface.commands.ToggleState" 
@@ -40,15 +40,20 @@
             class="de.itemis.eclipse.saveactions.internal.ToggleSaveActionsHandler">
          <activeWhen>
          	<and>
-	          	<with variable="activeEditorId">
-	       			<equals value="org.eclipse.jdt.ui.CompilationUnitEditor"/>
-	    		</with>
+         		<or>
+		          	<with variable="activeEditorId">
+		       			<equals value="org.eclipse.jdt.ui.CompilationUnitEditor"/>
+		    		</with>
+		          	<with variable="activeEditorId">
+		       			<equals value="com.google.gwt.eclipse.core.editors.gwtJavaEditor"/>
+		    		</with>
+	    		</or>
 	    		<not>
          			<with variable="activeEditor">
          				<test property="de.itemis.eclipse.saveactions.projectSaveActionsEnabled" forcePluginActivation="true" />
          			</with>
          		</not>
-         </and>
+         	</and>
          <!--
            <adapt type="org.eclipse.core.resources.IFile">
 			         <test property="de.itemis.eclipse.saveactions.projectSaveActionsEnabled" forcePluginActivation="true">
@@ -125,7 +130,7 @@
                   icon="icons/page_gear.png"
                   id="de.itemis.eclipse.saveactions.toolbars.toggleSaveActionsToolbarCommand"
                   style="toggle"
-                  tooltip="Toggle Save Actions">
+                  tooltip="%command.tooltip">
             </command>
          </toolbar>
       </menuContribution>

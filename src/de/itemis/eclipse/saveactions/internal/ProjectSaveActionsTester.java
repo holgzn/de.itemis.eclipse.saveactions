@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
- package de.itemis.eclipse.saveactions.internal;
+package de.itemis.eclipse.saveactions.internal;
 
 import org.eclipse.core.expressions.PropertyTester;
 import org.eclipse.core.resources.IFile;
@@ -13,7 +13,7 @@ import org.eclipse.ui.IEditorPart;
 
 /**
  * 
- * @author willebrandt
+ * @author holger willebrandt - Initial contribution and API
  */
 public class ProjectSaveActionsTester extends PropertyTester {
 

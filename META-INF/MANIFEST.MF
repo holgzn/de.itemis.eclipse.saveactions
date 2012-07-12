@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Toggle Save Actions
+Bundle-Name: %Bundle-Name
 Bundle-SymbolicName: de.itemis.eclipse.saveactions; singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: de.itemis.eclipse.saveactions.Activator
@@ -13,4 +13,4 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jdt
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Bundle-Vendor: itemis AG
+Bundle-Vendor: %Bundle-Vendor

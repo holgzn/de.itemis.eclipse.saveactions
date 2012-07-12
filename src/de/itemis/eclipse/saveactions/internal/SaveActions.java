@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
- package de.itemis.eclipse.saveactions.internal;
+package de.itemis.eclipse.saveactions.internal;
 
 import org.eclipse.core.commands.Command;
 import org.eclipse.core.resources.IProject;
@@ -24,8 +24,7 @@ import de.itemis.eclipse.saveactions.Activator;
 
 /**
  * 
- * @author willebrandt
- * 
+ * @author holger willebrandt - Initial contribution and API
  */
 public final class SaveActions {
 

@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
- package de.itemis.eclipse.saveactions;
+package de.itemis.eclipse.saveactions;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IStartup;
@@ -16,7 +16,7 @@ import de.itemis.eclipse.saveactions.internal.SaveActions;
 
 /**
  * 
- * @author willebrandt
+ * @author holger willebrandt - Initial contribution and API
  */
 public class Activator extends AbstractUIPlugin implements IStartup {
 
