@@ -61,7 +61,7 @@
 		         </adapt>
 		         -->
          </activeWhen>
-         <enabledWhen>
+         <!--<enabledWhen>-->
          <!--
          
          	<and>
@@ -95,7 +95,7 @@
     		<!--
     		</and>
     		-->
-         </enabledWhen>
+         <!--</enabledWhen>-->
       </handler>
    </extension>
    <extension

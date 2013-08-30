@@ -72,7 +72,6 @@ public final class SaveActions {
 		final Command command = commandService.getCommand(Activator.COMMAND_ID);
 		final PersistentState state = (PersistentState) command.getState(IMenuStateIds.STYLE);
 		state.setValue(Boolean.valueOf(enabled));
-		refreshUi();
 	}
 
 	public static void hookUp() {
